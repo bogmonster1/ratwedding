@@ -452,8 +452,7 @@ footer {
 
     /* Carousel */
     .slide img {
-        height: 400px;
-        width: auto;
+        height: 300px;
     }
 
     /* Smaller images on phone */
@@ -462,4 +461,5 @@ footer {
     }
 
     /* Hide arrows, use swipe */
+
 }
