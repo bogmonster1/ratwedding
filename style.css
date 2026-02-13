@@ -1,0 +1,465 @@
+/* =========================================
+   1. RESET & BASE STYLES
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #121212; /* Dark Theme Background */
+    color: #e0e0e0; /* Light Grey Text */
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   2. TYPOGRAPHY & UTILITIES
+   ========================================= */
+h1, h2, h3 {
+    text-transform: uppercase;
+    color: white;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Standard Container for content sections */
+.container {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Spacer for pages that don't have a Hero (like Gallery/Contact) */
+.page-content {
+    padding-top: 120px;
+    min-height: 90vh;
+}
+
+/* =========================================
+   3. NAVIGATION
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(18, 18, 18, 0.95);
+    border-bottom: 1px solid #333;
+
+    /* Sticky Positioning */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo in Navbar */
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+/* Desktop Links */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ff4d4d;
+}
+
+/* Mobile Hamburger Icon (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: 0.3s;
+}
+
+/* =========================================
+   4. HERO SECTION
+   ========================================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+
+    /* Background Image setup */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(18, 18, 18, 1)), url('assets/images/hero.png');
+    background-size: cover;
+    background-position: center;
+
+    /* Fallback color */
+    background-color: #1a1a1a;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Controls space between Logo, Text, and Buttons */
+    z-index: 2;
+}
+
+/* Main Hero Logo (The Image Title) */
+.hero-logo-img {
+    max-width: 800px;
+    width: 90%;
+    height: auto;
+    margin: 0;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.6));
+}
+
+/* Sub-Headline Text */
+.sub-headline {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin: 0; /* Reset margins */
+    text-shadow: 2px 2px 4px black;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #ff4d4d;
+    color: white;
+    border: 2px solid #ff4d4d;
+}
+
+.btn-primary:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: black;
+}
+
+/* =========================================
+   5. TOUR / GIG LIST
+   ========================================= */
+.tour-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tour-table th,
+.tour-table td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.tour-table th {
+    color: #888;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* Buy Tickets Button */
+.ticket-link {
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.ticket-link:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Status Badges (Free / TBA) */
+.ticket-status {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.ticket-status.free {
+    color: #4caf50;
+    border: 1px solid #4caf50;
+}
+
+.ticket-status.tba {
+    color: #888;
+    border: 1px solid #555;
+}
+
+/* Update Note (Instagram Link) */
+.tour-update-note {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+}
+
+.tour-update-note a {
+    color: #ff4d4d;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.tour-update-note a:hover {
+    color: #fff;
+}
+
+/* =========================================
+   6. PHOTO GALLERY (FILM STRIP STYLE)
+   ========================================= */
+.carousel-wrapper {
+    position: relative;
+    max-width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+/* Individual Slide Container */
+.slide {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+}
+
+/* The Image Itself */
+.slide img {
+    height: 50vh;
+    width: auto;
+    border-radius: 8px;
+    display: block;
+    max-width: 90vw;
+
+    /* Shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: 0.3s;
+
+    /* Flex alignment to center the arrow icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+.carousel-btn:hover {
+    background-color: #ff4d4d;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Custom Scrollbar */
+.carousel-track::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel-track::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb:hover {
+    background: #ff4d4d;
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #555;
+    font-size: 0.8rem;
+    border-top: 1px solid #222;
+}
+
+.contact-info{
+    text-align: center;
+}
+
+.socials {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.socials a {
+    color: #888;
+    margin: 0 15px;
+}
+
+.socials a:hover {
+    color: #fff;
+}
+
+/* =========================================
+   8. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+    /* Navigation */
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 60px;
+        flex-direction: column;
+        background-color: #121212;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        border-bottom: 1px solid #333;
+        padding: 20px 0;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    /* Hero */
+    .hero-logo-img {
+        width: 95%;
+    }
+
+    .sub-headline {
+        font-size: 1rem;
+    }
+
+    /* Tour Table - Stacked for Mobile */
+    .tour-table thead {
+        display: none;
+    }
+
+    /* Hide headers */
+    .tour-table tr {
+        display: block;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 15px;
+    }
+
+    .tour-table td {
+        display: block;
+        border: none;
+        padding: 5px 0;
+        text-align: center;
+    }
+
+    /* Carousel */
+    .slide img {
+        height: 400px;
+        width: auto;
+    }
+
+    /* Smaller images on phone */
+    .carousel-btn {
+        display: none;
+    }
+
+    /* Hide arrows, use swipe */
+}
