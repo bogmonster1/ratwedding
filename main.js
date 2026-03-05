@@ -61,8 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         // --- SMART TICKET LOGIC START ---
                         let ticketButtonHTML;
 
-                        // Clean up the input (make lowercase, remove spaces)
-                        // This allows the band to type "Free", "FREE", or "free " and it still works
                         const cleanLink = link.toLowerCase().trim();
 
                         if (cleanLink === 'free') {
@@ -113,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
 
-    // How far to scroll? (Adjust this based on your image width)
+    // How far to scroll
     const scrollAmount = 400;
 
     if (track && prevBtn && nextBtn) {
@@ -123,6 +121,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
         prevBtn.addEventListener('click', () => {
             track.scrollBy({left: -scrollAmount, behavior: 'smooth'});
+        });
+    }
+});
+
+// --- MERCH LIGHTBOX MODAL ---
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('merch-modal');
+    const modalImg = document.getElementById('modal-img');
+    const captionText = document.getElementById('modal-caption');
+    const closeBtn = document.querySelector('.close-modal');
+    const merchImages = document.querySelectorAll('.merch-img-trigger');
+
+    // Only run this if the modal actually exists on the page
+    if (modal && modalImg) {
+        // Loop through all merch images and add click events
+        merchImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = "flex";
+                modal.style.flexDirection = "column";
+                modal.style.justifyContent = "center";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt; // Uses the alt tag for the caption
+            });
+        });
+
+        // Close modal when clicking the X
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = "none";
+        });
+
+        // Close modal when clicking anywhere outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && modal.style.display === "flex") {
+                modal.style.display = "none";
+            }
         });
     }
 });
