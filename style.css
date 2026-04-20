@@ -258,6 +258,11 @@ h2 {
     border: 1px solid #555;
 }
 
+.ticket-status.otd {
+    color: #f39c12;
+    border: 1px solid #f39c12;
+}
+
 /* Update Note (Instagram Link) */
 .tour-update-note {
     text-align: center;

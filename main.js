@@ -66,11 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (cleanLink === 'free') {
                             // CASE 1: The show is explicitly FREE
                             ticketButtonHTML = '<span class="ticket-status free">Free Entry</span>';
+                        } else if (cleanLink === 'door' || cleanLink === 'otd' || cleanLink === 'on the door') {
+                            // CASE 2: Tickets are only sold at the venue
+                            ticketButtonHTML = '<span class="ticket-status otd">Tickets on the Door</span>';
                         } else if (!link || cleanLink === '' || cleanLink === 'tba' || cleanLink === 'tbc') {
-                            // CASE 2: No link or TBA
+                            // CASE 3: No link or TBA
                             ticketButtonHTML = '<span class="ticket-status tba">More Info Soon</span>';
                         } else {
-                            // CASE 3: It's a real URL
+                            // CASE 4: It's a real URL
                             ticketButtonHTML = `<a href="${link}" target="_blank" class="ticket-link">Buy Tickets</a>`;
                         }
                         // --- SMART TICKET LOGIC END ---
